@@ -1,0 +1,11 @@
+language: node_js
+
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t test_image -f Dockerfile.dev .
+
+script:
+  -docker run test_image npm run test -- --coverage
